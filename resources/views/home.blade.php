@@ -135,13 +135,5 @@
                 <?php } ?>
             </div>
         </div>
-    </div>
-    <div class="section bg-green-3">
-        <div class="col-12 col-sm-9 col-md-9 center nopad row bg-gradient contact radius-5">
-            <img src="{{BASE_URL}}images/contact-bg.png" class="img-fluid">
-            <div class="col-12 col-sm-10 col-md-10 center text-center">
-                <p class="ft-32">There are over 10,000 miles in your legs!<br/>We’ll tell you how…</p>
-                <button class="btn center bg-white">CONTACT US</button>
-            </div>
-        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>

@@ -13,4 +13,15 @@ class Site extends Controller
 		echo view('home')->render();
 		return view('footer')->render();
 	}
+
+	public function about()
+	{
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$pageTitle = "About Us";
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('about')->render();
+		return view('footer')->render();
+	}
 }
