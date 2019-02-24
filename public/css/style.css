@@ -41,7 +41,7 @@
     margin-bottom: 20px;
 }
 .mar-t-m50 {
-    margin-top: -50px;
+    margin-top: -50px !important;
 }
 .row-nomar {
     margin-right: 0;

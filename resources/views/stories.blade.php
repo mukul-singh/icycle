@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-9 col-md-8 center bg-white pad-60-30 lgrey ft-13">
+<div class="col-12 col-sm-9 col-md-8 center bg-white pad-60-30 lgrey ft-13 mar-t-m50">
     <center><img src="{{BASE_URL}}images/icons/stories.png" class="mar-b20"></center>
     <p class="col-12 col-sm-11 col-md-11 center text-center">
         The main target audience for ICYCLE events are the employees from the Corporate 
