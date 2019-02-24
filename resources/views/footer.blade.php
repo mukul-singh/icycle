@@ -55,13 +55,13 @@
         				<li>Contact Us</li>
         			</ul>
         		</div>
-        		<div class="col-12 col-sm-6 col-md-6">
-        			<table>
-        				<tr>
-        					<td><img src="{{BASE_URL}}images/social-page.png" class="img-fluid"></td>
-        					<td><img src="{{BASE_URL}}images/social-page.png" class="img-fluid"></td>
-        				</tr>
-        			</table>
+        		<div class="col-12 col-sm-6 col-md-6 row nopad nomar">
+                    <div class="col-6 pad-r0">
+                        <img src="{{BASE_URL}}images/social-page.png" class="img-fluid" width="100%">
+                    </div>
+                    <div class="col-6 pad-r0">
+                        <img src="{{BASE_URL}}images/social-page.png" class="img-fluid" width="100%">
+                    </div>
         		</div>
         	</div>
         </div>
