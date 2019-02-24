@@ -13,3 +13,4 @@
 
 Route::get('/', 'Site@index');
 Route::get('/about', 'Site@about');
+Route::get('/annual-events', 'Site@annualEvents');

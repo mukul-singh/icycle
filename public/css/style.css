@@ -67,8 +67,8 @@
 .ft-13 {
     font-size: 13px;
 }
-.line-ht-16 {
-    line-height: 1.6;
+.line-ht-17 {
+    line-height: 1.7;
 }
 .full-w {
     width: 100%;
@@ -102,6 +102,7 @@
 }
 .bg-gradient {
     background: linear-gradient(to right, #aec541, #50877d 50%);
+    color: #fff;
 }
 .color-gradient {
     background: linear-gradient(to right, #aec541, #50877d 50%);
@@ -287,6 +288,10 @@ b, .bold {
     font-size: 12px;
     font-weight: 700;
     border-radius: 10px;
+    outline: none;
+}
+.btn:focus, .btn:active {
+    outline: none;
 }
 .footer .subscribe {
     padding: 25px 0;

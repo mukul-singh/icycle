@@ -1,5 +1,5 @@
 <body class="bg-green-2">
-    <div class="tint-bg" bg-img="about-splash.png">
+    <div class="tint-bg" bg-img='{{str_replace(" ", "-", strtolower($pageTitle))}}-splash.png'>
         <div class="nav">
             <div class="logo col-12 col-md-4 col-sm-4 nopad">
                 <img src="assets/images/icons/nav.png" onclick="openNav()" class="visible-xs xs-nav-menu" width="20">
