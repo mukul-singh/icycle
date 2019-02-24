@@ -113,10 +113,10 @@
         <center><img src="{{BASE_URL}}images/icons/stories.png" width="50" class="mar-b15"></center>
         <div class="text-center ft-16 bold">IMPACT STORIES</div>
         <br/><br/>
-        <div class="col-12 col-sm-9 col-md-9 center nopad row">
+        <div class="col-12 col-sm-9 col-md-9 center pad-l0 row">
             <div class="row">
                 <?php for($i = 0; $i < 3; $i++) {?>
-                <div class="col-12 col-sm-4 col-md-4">
+                <div class="col-12 col-sm-4 col-md-4 pad-r0">
                     <div class="bg-white story">
                         <img src="{{BASE_URL}}images/story1.png" class="img-fluid story-img">
                         <div class="breif">

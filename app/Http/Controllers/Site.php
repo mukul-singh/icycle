@@ -46,4 +46,15 @@ class Site extends Controller
 		echo view('corporateEvents')->render();
 		return view('footer')->render();
 	}
+
+	public function stories()
+	{
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$pageTitle = "Impact Stories";
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('stories')->render();
+		return view('footer')->render();
+	}
 }
