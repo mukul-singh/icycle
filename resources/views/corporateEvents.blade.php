@@ -6,7 +6,7 @@
     	<br/>
         <div class="ft-32 mar-b20 bold">EVENTS MANAGEMENT</div>
         <p class="text-justify ft-16 line-ht-17">
-            ICYCLE is the leading Urban Bicycle Solutions Provider. ICYCLE’s resources and 
+            ICYCLE is the leading Urban Bicycle Solutions Provider. ICYCLE’s resources and
             capabilities are regularly featured in numerous bicycle events that happen in Bangalore.
             <br/><br/>
             From stage setup to handling the ride logistics, ICYCLE can do it all!
@@ -34,7 +34,7 @@
     <div class="col-6 pad-60-30">
         <div class="ft-32 mar-b20 bold">EVENTS MANAGEMENT</div>
         <p class="text-justify ft-16 line-ht-17">
-            ICYCLE is the leading Urban Bicycle Solutions Provider. ICYCLE’s resources and 
+            ICYCLE is the leading Urban Bicycle Solutions Provider. ICYCLE’s resources and
             capabilities are regularly featured in numerous bicycle events that happen in Bangalore.
             <br/><br/>
             From stage setup to handling the ride logistics, ICYCLE can do it all!
@@ -75,5 +75,3 @@
         <?php } ?>
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/>

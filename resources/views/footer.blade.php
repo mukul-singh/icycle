@@ -1,3 +1,5 @@
+	<br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/>
 	<div class="section bg-green-3 footer">
         <div class="col-12 col-sm-9 col-md-9 center nopad row bg-gradient contact radius-5">
             <img src="{{BASE_URL}}images/contact-bg.png" class="img-fluid">
@@ -24,8 +26,8 @@
         	<div class="col-12 row nopad">
         		<div class="col-12 col-sm-2 col-md-2 ft-13">
         			<p class="text-justify thin">
-        				ICYCLE SOLUTIONS PVT. LTD., is a Bangalore based startup, catering to 
-        				growing needs of urban cyclists. Under the brand name ICYCLE.in, the 
+        				ICYCLE SOLUTIONS PVT. LTD., is a Bangalore based startup, catering to
+        				growing needs of urban cyclists. Under the brand name ICYCLE.in, the
         				company offers unique cycling solutions.
         			</p>
         			<ul class="list-unstyled ft-13 bold">

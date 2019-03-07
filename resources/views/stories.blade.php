@@ -1,8 +1,8 @@
 <div class="col-12 col-sm-9 col-md-8 center bg-white pad-60-30 lgrey ft-13 mar-t-m50">
     <center><img src="{{BASE_URL}}images/icons/stories.png" class="mar-b20"></center>
     <p class="col-12 col-sm-11 col-md-11 center text-center">
-        The main target audience for ICYCLE events are the employees from the Corporate 
-        fraternity. The growing popularity of cycling in the cities is due to the 
+        The main target audience for ICYCLE events are the employees from the Corporate
+        fraternity. The growing popularity of cycling in the cities is due to the
         interest shown in cycling by these working professionals.
     </p>
     <br/>
@@ -42,7 +42,7 @@
                     <div class="date">06 DEC 2017</div>
                     <div class="ft-24 mar-b10">Excellent Ride Done Ever</div>
                     <p>
-                        The ICYCLE staff were also very supportive and cordial throughout. 
+                        The ICYCLE staff were also very supportive and cordial throughout.
                         Thank you for the entire arrangem...
                     </p>
                     <div class="bg-gradient more float-right">
@@ -54,5 +54,3 @@
         <?php } ?>
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/>
