@@ -1,35 +1,7 @@
 <body>
 	<div class="homepage-splash">
         <div class="tint">
-            <div class="nav">
-                <div class="logo col-12 col-md-4 col-sm-4 nopad">
-                    <img src="assets/images/icons/nav.png" onclick="openNav()" class="visible-xs xs-nav-menu" width="20">
-                    <a href="{{BASE_URL}}"><img src="{{BASE_URL}}images/logo.png" class="mar-l15" height="50"></a>
-                </div>
-                <div class="col-md-8 col-sm-8 nopad hidden-xs">
-                    <ul class="list-unstyled list-inline nav-links float-right nomar">
-                        <li class="list-inline-item"><a href="{{BASE_URL}}services">SERVICES</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}stories">IMPACE STORIES</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}icycle-store">ICYCLE STORE</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}bicycle">BICYCLE SOS</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}about">ABOUT</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}contact">CONTACT</a></li>
-                        <li class="list-inline-item"><a href="{{BASE_URL}}login">LOGIN/REGISTER</a></li>
-                    </ul>
-                </div>
-                <div id="mySidenav" class="sidenav">
-                    <img src="assets/images/icons/close-cancel.svg" width="12" class="float-right" onclick="closeNav()">
-                    <ul class="list-unstyled list-inline">
-                        <li class="mar-b15"><a href="{{BASE_URL}}services">SERVICES</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}stories">IMPACE STORIES</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}icycle-store">ICYCLE STORE</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}bicycle">BICYCLE SOS</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}about">ABOUT</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}contact">CONTACT</a></li>
-                        <li class="mar-b15"><a href="{{BASE_URL}}login">LOGIN/REGISTER</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?= $navbar;?>
             <div class="col-12 banner nopad">
                 <div class="col-12 col-sm-10 col-md-10 center nopad">
                     <div class="col-12 col-sm-8 col-md-8 quote nopad mar-b15">Rediscover Cycling. Recreate yourself.</div>
@@ -68,8 +40,8 @@
     	<div class="text-center ft-16 bold">WHO WE ARE</div>
         <br/><br/>
     	<p class="text-align col-12 col-sm-8 col-md-8 center ft-24 thin">
-    		We are a Bangalore based startup, catering to growing needs of urban cyclists. 
-    		Under the brand name ICYCLE, the company offers unique cycling solutions. 
+    		We are a Bangalore based startup, catering to growing needs of urban cyclists.
+    		Under the brand name ICYCLE, the company offers unique cycling solutions.
     		We are the pioneers in bicycle fleet management with customized support system.
     	</p>
         <br/><br/>
@@ -80,10 +52,10 @@
             <div class="col-7">
                 <h3 class="ft-16 bold">YUVRAJ METRANI</h3>
                 <p class="ft-16">
-                    Riding uphill, on a warm October afternoon at a slow and steady pace, 
-                    I kept telling myself "stay calm, you have a long way to go". 
-                    I had to preserve my energy for the final 3 kilometers to the peak. 
-                    I was one of the 45 cyclists riding on the 4th day of Great Malnad Challenge - 2014. 
+                    Riding uphill, on a warm October afternoon at a slow and steady pace,
+                    I kept telling myself "stay calm, you have a long way to go".
+                    I had to preserve my energy for the final 3 kilometers to the peak.
+                    I was one of the 45 cyclists riding on the 4th day of Great Malnad Challenge - 2014.
                     We had started off from Madikeri and had cycled to Chikmagalur covering 260km off road trails in 3 days on MTB.
                 </p>
             </div>
@@ -123,7 +95,7 @@
                             <div class="date">06 DEC 2017</div>
                             <div class="ft-24 mar-b10">Excellent Ride Done Ever</div>
                             <p>
-                                The ICYCLE staff were also very supportive and cordial throughout. 
+                                The ICYCLE staff were also very supportive and cordial throughout.
                                 Thank you for the entire arrangem...
                             </p>
                             <div class="bg-gradient more float-right">
