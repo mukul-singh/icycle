@@ -19,10 +19,9 @@ class Site extends Controller
 	{
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
-		$pageTitle = "Login";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('home', ['navbar' => $navbar])->render();
+		echo view('login', ['navbar' => $navbar])->render();
 		return view('footer')->render();
 	}
 

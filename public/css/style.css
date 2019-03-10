@@ -51,6 +51,9 @@
     float: none !important;
     margin: auto;
 }
+.ft-64 {
+    font-size: 64px;
+}
 .ft-54 {
     font-size: 54px;
 }
@@ -105,6 +108,14 @@
 }
 .bg-gradient {
     background: linear-gradient(to right, #aec541, #50877d 50%);
+    color: #fff;
+}
+.bg-gplus {
+    background: #e05343;
+    color: #fff;
+}
+.bg-fb {
+    background: #3e58a4;
     color: #fff;
 }
 .color-gradient {
@@ -173,7 +184,6 @@ hr.dark {
   color: #b1b5b8 !important;
 }
 .homepage-splash {
-    background-image: url("../images/home-banner.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -182,6 +192,20 @@ hr.dark {
 .homepage-splash .tint {
     width: 100%;
     height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+}
+.homepage-splash {
+    background-image: url("../images/home-banner.png");
+}
+.login-splash {
+    background-image: url("../images/login-banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: -270px;
+}
+.login-splash .tint {
+    width: 100%;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
 }
 .tint-bg {
