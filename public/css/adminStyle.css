@@ -1,3 +1,51 @@
+body {
+    color: #333;
+}
 .nav-link, .nav-link:hover {
     color: #333;
+}
+.popover.error-alert {
+    font-size: 12px;
+    color: #FFF;
+    background-color: #C04848;
+    border: none;
+}
+.bs-popover-auto[x-placement^=top] .arrow::after, .bs-popover-top .arrow::after {
+    border-top-color: #C04848;
+}
+.bs-popover-auto[x-placement^=right] .arrow::after, .bs-popover-right .arrow::after {
+    border-right-color: #C04848;
+}
+.bs-popover-auto[x-placement^=bottom] .arrow::after, .bs-popover-bottom .arrow::after {
+    border-bottom-color: #C04848;
+}
+.bs-popover-auto[x-placement^=left] .arrow::after, .bs-popover-left .arrow::after {
+    border-left-color: #C04848;
+}
+.popover-body {
+    color: #fff;
+}
+.spinner {
+  border: 2px solid #E2E2E2;
+  border-radius: 50%;
+  border-top: 2px solid #333;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  -webkit-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
+}
+.spinner.white.xs {
+    width: 13px;
+    height: 13px;
+    border: 2px solid #FFF;
+    border-top: 2px solid #000;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+.btn .spinner {
+	margin-bottom: -2px;
+	margin-left: 5px;
 }

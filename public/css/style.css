@@ -97,6 +97,9 @@
 .v-align-b {
     vertical-align: bottom;
 }
+.v-align-t {
+    vertical-align: top;
+}
 .bg-green-1 {
     background: #2e4342;
 }

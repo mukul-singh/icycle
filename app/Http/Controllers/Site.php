@@ -37,6 +37,18 @@ class Site extends Controller
 		return view('footer')->render();
 	}
 
+	public function contact()
+	{
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$pageTitle = "Contact Us";
+		$navbar = view('nav')->render();
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
+		echo view('contact')->render();
+		return view('footer')->render();
+	}
+
 	public function annualEvents()
 	{
 		$title = "Icycle - Rediscover Cycling";
@@ -44,7 +56,7 @@ class Site extends Controller
 		$pageTitle = "Annual Events";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
 		echo view('annualEvents')->render();
 		return view('footer')->render();
 	}
@@ -56,7 +68,7 @@ class Site extends Controller
 		$pageTitle = "Corporate Events";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
 		echo view('corporateEvents')->render();
 		return view('footer')->render();
 	}
@@ -68,7 +80,7 @@ class Site extends Controller
 		$pageTitle = "Impact Stories";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
 		echo view('stories')->render();
 		return view('footer')->render();
 	}
@@ -80,7 +92,7 @@ class Site extends Controller
 		$pageTitle = "Hire a Bicycle";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('header', ['pageTitle' => $pageTitle])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
 		echo view('hireBicycle')->render();
 		return view('footer')->render();
 	}

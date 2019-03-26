@@ -9,4 +9,6 @@
     <link rel="stylesheet" type="text/css" href="{{BASE_URL}}css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{BASE_URL}}css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="{{BASE_URL}}css/adminStyle.css"/>
+	<script>var BASE_URL = "<?=BASE_URL;?>"</script>
 </head>
+<body>
