@@ -49,3 +49,6 @@ body {
 	margin-bottom: -2px;
 	margin-left: 5px;
 }
+.pad-5-10 {
+  padding: 5px 10px !important;
+}

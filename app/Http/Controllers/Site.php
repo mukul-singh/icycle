@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 define('BASE_URL', 'http://myproj/icycle/public/');
 
 class Site extends Controller
@@ -73,11 +74,41 @@ class Site extends Controller
 		return view('footer')->render();
 	}
 
+	public function weekendEvents()
+	{
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$pageTitle = "Corporate Events";
+		$navbar = view('nav')->render();
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
+		echo view('weekendEvents')->render();
+		return view('footer')->render();
+	}
+
+	public function weekendEventsDetail($trail, $date)
+	{
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->first();
+		if(count($event)) {
+			$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
+		}
+		$pageTitle = "Ghati Ghats";
+		$subTitle = "26 JAN 2019";
+		$navbar = view('nav')->render();
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle, 'subTitle' => $subTitle])->render();
+		echo view('weekendEventsDetail', ['event' => $event])->render();
+		return view('footer')->render();
+	}
+
 	public function stories()
 	{
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
 		$pageTitle = "Impact Stories";
+		
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
 		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
