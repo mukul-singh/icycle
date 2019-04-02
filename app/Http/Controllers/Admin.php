@@ -39,12 +39,24 @@ class Admin extends Controller
 		echo view('admin.footer')->render();
 	}
 
-	public function weekendEvent($action) {
-		if($action == "new") {
-			$title = "Icycle - Admin";
-			echo view('admin.meta', ['title' => $title])->render();
-			echo view('admin.nav')->render();
+	public function weekendEvent($action = "list", $eid = null) {
+		$title = "Icycle - Admin";
+		echo view('admin.meta', ['title' => $title])->render();
+		echo view('admin.nav')->render();
+		if($action === "list") {
+			$events = DB::table("weekend_events")->orderBy("id", "desc")->get();
+			echo view("admin.weekendEvents", ["events" => $events])->render();
+		}
+		else if($action == "new") {
 			echo view('admin.addWeekendEvent')->render();
+		}
+		else if($action == "update") {
+			$event = DB::table("weekend_events")->where("id", $eid)->first();
+			if(count($event)) {
+				$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
+				$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
+			}
+			echo view('admin.addWeekendEvent', ['event' => $event])->render();
 		}
 		return view('admin.footer')->render();
 	}
@@ -71,6 +83,7 @@ class Admin extends Controller
 
 		else if($action == "add-weekend-event") {
 			$data = json_decode(Input::get("data"), true);
+			$points = json_decode(Input::get("detailPoints"), true);
 			if(isset($_FILES['eventBanner'])) {
 				$bannerImg = $this->uploadFile($_FILES['eventBanner'], 'images/uploads/weekend-events/banner');
 				if($bannerImg != -1) {
@@ -90,6 +103,10 @@ class Admin extends Controller
 				}
 			}
 			$eid = DB::table("weekend_events")->insertGetId($data);
+			for($i = 0; $i < count($points); $i++) {
+				$points[$i]['eid'] = $eid;
+			}
+			DB::table("infoPoints")->insert($points);
 			$gallery = [];
 			for($i = 1; $i <= Input::get("galleryImageCount"); $i++) {
 				if(isset($_FILES['galleryImage'.$i])) {

@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="col-12 col-sm-6 col-md-6 nopad">
-        <img src="{{BASE_URL}}images/uploads/weekend-events/banner/{{$event->banner}}.png" class="full-w">
+        <img src="{{BASE_URL}}images/uploads/weekend-events/banner/{{$event->banner}}" class="full-w">
     </div>
     <div class="col-12 col-sm-6 col-md-6">
     </div>
@@ -58,87 +58,26 @@
     </div>
     <div class="col-12 col-sm-4 col-md-4">
         <br/><br/><br/>
-        <?php for($i = 0; $i < 8; $i++) {?>
+         <?php foreach($event->infoPoints as $info) {?>
         <div class="mar-b20 pad-l15">
-            Event Start Point<br/><b>Swimming Pool</b>
+            {{$info->key}}<br/><b>{{$info->value}}</b>
         </div>
         <?php } ?>
     </div>
-    <div class="col-12">
+    <div class="col-12 mar-b20">
         <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
             <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                <div class="carousel-item col-md-2  active">
+                <?php for($i = 0; $i < count($event->gallery); $i++) {?>
+                <div class="carousel-item col-md-2 {{($i == 0) ? 'active':''}}">
                     <div class="panel panel-default">
                         <div class="panel-thumbnail">
-                            <a href="#" title="image 1" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=1" alt="slide 1">
+                            <a href="#" class="thumb">
+                                <img class="img-fluid mx-auto d-block" src="{{BASE_URL}}images/uploads/weekend-events/gallery/{{$event->gallery[$i]->image}}">
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 3" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=2" alt="slide 2">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 4" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=3" alt="slide 3">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 5" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=4" alt="slide 4">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 6" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=5" alt="slide 5">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 7" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=6" alt="slide 6">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2 ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 8" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=7" alt="slide 7">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item col-md-2  ">
-                    <div class="panel panel-default">
-                        <div class="panel-thumbnail">
-                            <a href="#" title="image 2" class="thumb">
-                            <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=8" alt="slide 8">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -150,4 +89,5 @@
             </a>
         </div>
     </div>
+    <div class="col-12 mar-b20"></div>
 </div>

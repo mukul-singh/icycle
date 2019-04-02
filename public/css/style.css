@@ -82,6 +82,9 @@
 .full-w {
     width: 100%;
 }
+.bordered {
+    border: 1px solid #ccc;
+}
 .table td {
     border-top: none;
 }

@@ -35,7 +35,15 @@ function addMorePhotos() {
     $("#gallery-images").append('<div class="col-12 row mar-b15"><div class="col-8"><input type="file" class="form-control gallery-img"></div><div class="col-4"><button class="btn compact btn-danger pad-5-10" onclick="removePhoto(this)">&times;</button></div></div>');
 }
 
+function addMorePoints() {
+    $("#detail-points").append('<tr class="point"><td><input type="text" class="form-control key" placeholder="Key"></td><td><input type="text" class="form-control value" placeholder="Value"></td><td><button class="btn compact btn-danger pad-5-10" onclick="removePoint(this)">&times;</button></td></tr>');
+}
+
 function removePhoto(e) {
+    $(e).parent().parent().remove();
+}
+
+function removePoint(e) {
     $(e).parent().parent().remove();
 }
 
@@ -53,14 +61,34 @@ function saveEvent(e) {
         "mentor_mobile": $("#mentor-mobile").val().trim(),
         "mentor_exp": $("#mentor-exp").val().trim(),
         "description": $("#event-desc").val().trim(),
+    };
+    if(data['trail'] == "") {
+        showPopover("#trail", "top", "Trail is required");
+        return;
+    }
+    if(data['date'] == "") {
+        showPopover("#event-date", "top", "Event date is required");
+        return;
     }
     var formData = new FormData();
     var galleryImageCount = 0;
+    var detailPoints = [];
     formData.append("action", "add-weekend-event");
     formData.append("data", JSON.stringify(data));
     formData.append("eventBanner", $("#event-banner").prop('files')[0]);
     formData.append("elevationImg", $("#elevation-img").prop('files')[0]);
     formData.append("mentorImg", $("#mentor-img").prop('files')[0]);
+    $("#detail-points .point").each(function() {
+        var key = $(this).find(".key").val().trim();
+        var value = $(this).find(".value").val().trim();
+        if(key != "" && value != "") {
+            detailPoints.push({
+                "key": key,
+                "value": value
+            })
+        }
+    });
+    formData.append("detailPoints", JSON.stringify(detailPoints));
     $("#gallery-images .gallery-img").each(function() {
         if($(this).val()) {
             galleryImageCount++;

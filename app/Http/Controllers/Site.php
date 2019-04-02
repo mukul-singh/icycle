@@ -93,6 +93,7 @@ class Site extends Controller
 		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->first();
 		if(count($event)) {
 			$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
+			$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
 		}
 		$pageTitle = "Ghati Ghats";
 		$subTitle = "26 JAN 2019";
