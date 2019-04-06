@@ -52,3 +52,6 @@ body {
 .pad-5-10 {
   padding: 5px 10px !important;
 }
+.absolute {
+  position: absolute;
+}

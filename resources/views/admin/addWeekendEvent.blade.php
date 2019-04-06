@@ -16,7 +16,7 @@
 			<tr>
 				<td>Date</td>
 				<td>
-					<input type="date" class="form-control" id="event-date" value="<?=isset($event) ? $event->date : '';?>">
+					<input type="date" class="form-control" id="event-date" value="<?=isset($event) ? substr($event->date, 0, 10) : '';?>">
 				</td>
 			</tr>
 			<tr>
@@ -135,6 +135,15 @@
 			<button class="btn compact btn-success pad-5-10" title="Add a photo" onclick="addMorePhotos()">+</button>
 		</h4>
 		<div class="col-12 row mar-b15">
+			<?php if(isset($event)) {
+				foreach($event->gallery as $image) { ?>
+				<div class="col-3 pad-r0 mar-b15">
+					<button class="btn-xs btn-danger rounded absolute" onclick="deleteGalleryImage({{$event->id}}, {{$image->id}}, this)">Delete</button>
+					<img src="{{BASE_URL}}images/uploads/weekend-events/gallery/{{$image->image}}" class="img-fluid rounded">
+				</div>
+			<?php } ?>
+				<div class="col-12 mar-b20"></div>
+			<?php } ?>
 			<div class="col-8">
 				<input type="file" class="form-control gallery-img">
 			</div>
@@ -143,5 +152,5 @@
 			</div>
 		</div>
 	</div>
-	<button class="btn btn-success mar-b20" onclick="saveEvent(this)">Save</button>
+	<button class="btn btn-success mar-b20" onclick="saveEvent(this, <?=(isset($event) ? $event->id : '0');?>)">Save</button>
 </div>

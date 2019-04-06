@@ -39,22 +39,22 @@
         			<b>OUR SERVICES</b>
         			<ul class="list-unstyled ft-13 bold">
         				<li><br/></li>
-        				<li>Hire a Bicycle</li>
-        				<li>Weekend Events</li>
-        				<li>Annual Events</li>
-        				<li>Cyclotour Hub</li>
-        				<li>Corporate Programs</li>
+        				<li><a href="{{BASE_URL}}hire-a-bicycle">Hire a Bicycle</a></li>
+        				<li><a href="{{BASE_URL}}weekend-events">Weekend Events</a></li>
+        				<li><a href="{{BASE_URL}}annual-events">Annual Events</a></li>
+        				<li><a href="#">Cyclotour Hub</a></li>
+        				<li><a href="{{BASE_URL}}corporate-events">Corporate Programs</a></li>
         			</ul>
         		</div>
         		<div class="col-6 col-sm-2 col-md-2">
         			<b>QUICKLINKS</b>
         			<ul class="list-unstyled ft-13 bold">
         				<li><br/></li>
-        				<li>Impact Stories</li>
-        				<li>Icycle Store</li>
-        				<li>LBS Locator</li>
-        				<li>About Us</li>
-        				<li>Contact Us</li>
+        				<li><a href="{{BASE_URL}}stories">Impact Stories</a></li>
+        				<li><a href="{{BASE_URL}}icycle-store">Icycle Store</a></li>
+        				<li><a href="#">LBS Locator</a></li>
+        				<li><a href="{{BASE_URL}}about">About Us</a></li>
+        				<li><a href="{{BASE_URL}}contact">Contact Us</a></li>
         			</ul>
         		</div>
         		<div class="col-12 col-sm-6 col-md-6 row nopad nomar">

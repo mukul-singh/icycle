@@ -6,6 +6,7 @@ define('BASE_URL', 'http://myproj/icycle/public/');
 
 class Site extends Controller
 {
+	protected $months = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 	public function index()
 	{
 		$title = "Icycle - Rediscover Cycling";
@@ -78,11 +79,12 @@ class Site extends Controller
 	{
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
-		$pageTitle = "Corporate Events";
+		$pageTitle = "Weekend Events";
 		$navbar = view('nav')->render();
+		$events = DB::table("weekend_events")->where("active", 1)->get();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
 		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
-		echo view('weekendEvents')->render();
+		echo view('weekendEvents', ['events' => $events, 'months' => $this->months])->render();
 		return view('footer')->render();
 	}
 
@@ -95,12 +97,24 @@ class Site extends Controller
 			$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
 			$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
 		}
-		$pageTitle = "Ghati Ghats";
-		$subTitle = "26 JAN 2019";
+		$subTitle = substr($event->date, 9, 2)." ".strtoupper($this->months[(int)substr($event->date, 5, 2)])." ".substr($event->date, 0, 4);
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
-		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle, 'subTitle' => $subTitle])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $event->trail, 'subTitle' => $subTitle])->render();
 		echo view('weekendEventsDetail', ['event' => $event])->render();
+		return view('footer')->render();
+	}
+
+	public function cyclotours()
+	{
+		$title = "Icycle - Cyclotour Hub";
+		$desc = "Icycle - Cyclotour Hub";
+		$pageTitle = "Cyclotour Hub";
+		$navbar = view('nav')->render();
+		$tours = DB::table("cyclotours")->where("active", 1)->get();
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
+		echo view('cyclotours', ['tours' => $tours])->render();
 		return view('footer')->render();
 	}
 

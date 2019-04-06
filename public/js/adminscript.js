@@ -47,7 +47,7 @@ function removePoint(e) {
     $(e).parent().parent().remove();
 }
 
-function saveEvent(e) {
+function saveEvent(e, eid) {
     var data = {
         "trail": $("#trail").val().trim(),
         "date": $("#event-date").val(),
@@ -75,6 +75,7 @@ function saveEvent(e) {
     var detailPoints = [];
     formData.append("action", "add-weekend-event");
     formData.append("data", JSON.stringify(data));
+    formData.append("eid", eid);
     formData.append("eventBanner", $("#event-banner").prop('files')[0]);
     formData.append("elevationImg", $("#elevation-img").prop('files')[0]);
     formData.append("mentorImg", $("#mentor-img").prop('files')[0]);
@@ -106,6 +107,50 @@ function saveEvent(e) {
         data: formData,
         success: function(data) {
             unloadButton(e, ".spinner");
+        }
+    });
+}
+
+function deleteGalleryImage(eid, id, e) {
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        data: {"action":"delete-gallery-image", "eid":eid, "id":id},
+        success: function(data) {
+            $(e).parent().remove();
+        }
+    });
+}
+
+function saveTour(e, cid) {
+    var data = {
+        "name": $("#name").val().trim(),
+        "rental_cost_1": $("#cost1").val(),
+        "rental_cost_2": $("#cost2").val(),
+        "rental_cost_3": $("#cost3").val(),
+        "rental_cost_4": $("#cost4").val(),
+        "rental_cost_5": $("#cost5").val(),
+        "member_A_bike": $("#mbike1").val(),
+        "member_B_bike": $("#mbike2").val(),
+        "member_C_bike": $("#mbike3").val(),
+        "member_D_bike": $("#mbike4").val(),
+        "member_A_cost": $("#mcost1").val(),
+        "member_B_cost": $("#mcost2").val(),
+        "member_C_cost": $("#mcost3").val(),
+        "member_D_cost": $("#mcost4").val(),
+    };
+    if(data['name'] == "") {
+        showPopover("#name", "top", "Name is required");
+        return;
+    }
+    loadButton(e, spinnerwhitexs);
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        data: {"action":"cyclotour", "cid":cid, "data":data},
+        success: function(data) {
+            unloadButton(e, ".spinner");
+            location.reload();
         }
     });
 }

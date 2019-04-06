@@ -39,7 +39,8 @@ class Admin extends Controller
 		echo view('admin.footer')->render();
 	}
 
-	public function weekendEvent($action = "list", $eid = null) {
+	public function weekendEvent($action = "list", $eid = null)
+	{
 		$title = "Icycle - Admin";
 		echo view('admin.meta', ['title' => $title])->render();
 		echo view('admin.nav')->render();
@@ -57,6 +58,25 @@ class Admin extends Controller
 				$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
 			}
 			echo view('admin.addWeekendEvent', ['event' => $event])->render();
+		}
+		return view('admin.footer')->render();
+	}
+
+	public function cyclotour($action = "list", $cid = null)
+	{
+		$title = "Icycle - Admin";
+		echo view('admin.meta', ['title' => $title])->render();
+		echo view('admin.nav')->render();
+		if($action === "list") {
+			$tours = DB::table("cyclotours")->orderBy("id", "desc")->get();
+			echo view("admin.cyclotours", ["tours" => $tours])->render();
+		}
+		else if($action == "new") {
+			echo view('admin.addCyclotour')->render();
+		}
+		else if($action == "update") {
+			$tour = DB::table("cyclotours")->where("id", $cid)->first();
+			echo view('admin.addCyclotour', ['tour' => $tour])->render();
 		}
 		return view('admin.footer')->render();
 	}
@@ -82,6 +102,7 @@ class Admin extends Controller
 		}
 
 		else if($action == "add-weekend-event") {
+			$eid = Input::get("eid");
 			$data = json_decode(Input::get("data"), true);
 			$points = json_decode(Input::get("detailPoints"), true);
 			if(isset($_FILES['eventBanner'])) {
@@ -102,10 +123,21 @@ class Admin extends Controller
 					$data['mentor_img'] = $mentorImg;
 				}
 			}
-			$eid = DB::table("weekend_events")->insertGetId($data);
+			if($eid == 0) {
+				// Insert a new event
+				$eid = DB::table("weekend_events")->insertGetId($data);
+			}
+			else {
+				// Update an event
+				DB::table("weekend_events")->where("id", $eid)->update($data);
+
+				// Delete old infoPoints
+				DB::table("infoPoints")->where("id", $eid)->delete();
+			}
 			for($i = 0; $i < count($points); $i++) {
 				$points[$i]['eid'] = $eid;
 			}
+			// Insert new points
 			DB::table("infoPoints")->insert($points);
 			$gallery = [];
 			for($i = 1; $i <= Input::get("galleryImageCount"); $i++) {
@@ -119,6 +151,23 @@ class Admin extends Controller
 			if(count($gallery)) {
 				DB::table("event_gallery")->insert($gallery);
 			}
+		}
+
+		else if($action == "cyclotour") {
+			$data = Input::get("data");
+			$cid = Input::get("cid");
+			if($cid == 0) {
+				DB::table("cyclotours")->insert($data);
+			}
+			else {
+				DB::table("cyclotours")->where("id", $cid)->update($data);
+			}
+		}
+
+		else if($action == "delete-gallery-image") {
+			$img = DB::table("event_gallery")->where("id", Input::get("id"))->first();
+			DB::table("event_gallery")->where("eid", Input::get("eid"))->where("id", Input::get("id"))->delete();
+			unlink('images/uploads/weekend-events/gallery/'.$img->image);
 		}
 	}
 

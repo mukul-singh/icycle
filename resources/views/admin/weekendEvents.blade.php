@@ -1,5 +1,16 @@
 <div class="container-fluid row row-nomar">
-	<table class="table">
+	<h2 class="mar-b20">
+		Weekedn Events
+		<a href="{{BASE_URL}}adminme/events/weekend-events/new">
+			<button class="btn compact btn-success">Add new</button>
+		</a>
+	</h2>
+	<table class="table table-hover">
+		<tr>
+			<th>Sr no.</th>
+			<th>Event Name</th>
+			<th>Actions</th>
+		</tr>
 		<?php foreach($events as $i => $event) {?>
 		<tr>
 			<td>{{($i+1)}}</td>
