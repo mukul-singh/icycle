@@ -2,7 +2,7 @@
     <div class="tint-bg" bg-img='{{str_replace(" ", "-", strtolower($pageTitle))}}-splash.png'>
         <?= $navbar;?>
         <br/><br/>
-        <div class="ft-54 text-center thin">{{$pageTitle}}</div>
+        <div class="ft-54 text-center thin xs-ft-32">{{$pageTitle}}</div>
         <?php if(isset($subTitle)) { ?>
         	<div class="ft-20 bold text-center">{{$subTitle}}</div>
         <?php } ?>

@@ -1,9 +1,7 @@
-	<br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/>
 	<div class="section bg-green-3 footer">
         <div class="col-12 col-sm-9 col-md-9 center nopad row bg-gradient contact radius-5">
             <img src="{{BASE_URL}}images/contact-bg.png" class="img-fluid">
-            <div class="col-12 col-sm-10 col-md-10 center text-center">
+            <div class="col-12 col-sm-10 col-md-10 center text-center xs-pad-20">
                 <p class="ft-32">There are over 10,000 miles in your legs!<br/>We’ll tell you how…</p>
                 <button class="btn center bg-white">CONTACT US</button>
             </div>
@@ -19,12 +17,13 @@
                 </div>
             </div>
         </div>
-        <br/><br/><br/><br/><br/>
-        <div class="col-12 col-sm-10 col-md-10 nopad center">
+        <br/><br/>
+        <div class="hidden-xs"><br/><br/><br/></div>
+        <div class="col-12 col-sm-10 col-md-10 nopad center xs-pad-20">
         	<img src="{{BASE_URL}}images/logo.png" width="130" class="mar-b15">
         	<br/>
-        	<div class="col-12 row nopad">
-        		<div class="col-12 col-sm-2 col-md-2 ft-13">
+        	<div class="col-12 row nopad xs-mar-r0">
+        		<div class="col-12 col-sm-2 col-md-2 ft-13 xs-mar-b20">
         			<p class="text-justify thin">
         				ICYCLE SOLUTIONS PVT. LTD., is a Bangalore based startup, catering to
         				growing needs of urban cyclists. Under the brand name ICYCLE.in, the
@@ -42,7 +41,7 @@
         				<li><a href="{{BASE_URL}}hire-a-bicycle">Hire a Bicycle</a></li>
         				<li><a href="{{BASE_URL}}weekend-events">Weekend Events</a></li>
         				<li><a href="{{BASE_URL}}annual-events">Annual Events</a></li>
-        				<li><a href="#">Cyclotour Hub</a></li>
+        				<li><a href="{{BASE_URL}}cyclotours">Cyclotour Hub</a></li>
         				<li><a href="{{BASE_URL}}corporate-events">Corporate Programs</a></li>
         			</ul>
         		</div>

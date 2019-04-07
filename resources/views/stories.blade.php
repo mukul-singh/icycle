@@ -32,10 +32,10 @@
     SHOWING 1-12 OF 213<span class="pad-10">|</span>Next<span class="pad-10">|</span>Previous
 </div>
 <br/><br/><br/>
-<div class="col-12 col-sm-9 col-md-8 center pad-l0">
-    <div class="row">
+<div class="col-12 col-sm-9 col-md-8 center pad-l0 xs-pad-20">
+    <div class="row xs-nomar">
         <?php for($i = 0; $i < 9; $i++) {?>
-        <div class="col-12 col-sm-4 col-md-4 mar-b15 pad-r0">
+        <div class="col-12 col-sm-4 col-md-4 mar-b15 pad-r0 xs-nopad">
             <div class="bg-white story">
                 <img src="{{BASE_URL}}images/story1.png" class="img-fluid story-img">
                 <div class="breif">
@@ -53,4 +53,5 @@
         </div>
         <?php } ?>
     </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </div>

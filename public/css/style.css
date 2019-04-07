@@ -307,6 +307,8 @@ hr.dark {
 }
 .story .story-img {
     border-radius: 8px 8px 0 0;
+    height: 200px;
+    width: 100%;
 }
 .story .more {
     width: 40px;
@@ -520,13 +522,37 @@ hr.dark {
     .xs-nopad {
         padding: 0 !important;
     }
+    .xs-pad-20 {
+        padding: 20px !important
+    }
+    .xs-pad-l20 {
+        padding-left: 20px !important
+    }
+    .xs-pad-r20 {
+        padding-right: 20px !important
+    }
     .xs-nomar {
         margin: 0 !important;
+    }
+    .xs-mar-r0 {
+        margin-right: 0 !important;
+    }
+    .xs-mar-b20 {
+        margin-bottom: 20px !important;
     }
     .visible-xs {
         display: inline-block;
     }
     .hidden-xs {
         display: none;
+    }
+    .homepage-splash .banner .quote {
+        font-size: 40px;
+    }
+    .xs-ft-32 {
+        font-size: 32px !important;
+    }
+    .footer {
+        padding-bottom: 10px;
     }
 }

@@ -29,7 +29,9 @@
 			<?php foreach($events as $event) {?>
 			<div class="col-12 col-sm-6 col-md-6 we-outer mar-b15 pad-r0 rounded">
 				<div class="we-banner">
-					<img src="{{BASE_URL}}images/uploads/weekend-events/banner/{{$event->banner}}" class="full-w rounded">
+					<a href="{{BASE_URL}}weekend-events/{{urlencode($event->trail)}}/{{substr($event->date, 0, 10)}}">
+						<img src="{{BASE_URL}}images/uploads/weekend-events/banner/{{$event->banner}}" class="full-w rounded">
+					</a>
 				</div>
 				<div class="pad-25 row row-nomar bg-white">
 					<span class="trip-fav">
@@ -37,7 +39,11 @@
 					</span>
 					<small class="color-green">{{substr($event->date, 8, 2)." ".strtoupper($months[(int)substr($event->date, 5, 2)])." ".substr($event->date, 0, 4)}}</small>
 					<div class="col-12"></div>
-					<b class="ft-24 trail">{{$event->trail}}</b>
+					<b class="ft-24 trail">
+						<a href="{{BASE_URL}}weekend-events/{{urlencode($event->trail)}}/{{substr($event->date, 0, 10)}}">
+							{{$event->trail}}
+						</a>
+					</b>
 					<div class="col-12"></div>
 					<div class="col-8 nopad">
 						Level<br/><b>{{@["","Beginner", "Medium", "Advance"][$event->level]}}</b>
@@ -51,3 +57,4 @@
 		</div>
 	</div>
 </div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
