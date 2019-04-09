@@ -34,20 +34,19 @@
 <br/><br/><br/>
 <div class="col-12 col-sm-9 col-md-8 center pad-l0 xs-pad-20">
     <div class="row xs-nomar">
-        <?php for($i = 0; $i < 9; $i++) {?>
+        <?php foreach($stories as $story) {?>
         <div class="col-12 col-sm-4 col-md-4 mar-b15 pad-r0 xs-nopad">
             <div class="bg-white story">
-                <img src="{{BASE_URL}}images/story1.png" class="img-fluid story-img">
+                <img src="{{BASE_URL}}images/uploads/stories/banners/{{$story->banner}}" class="img-fluid story-img">
                 <div class="breif">
-                    <div class="date">06 DEC 2017</div>
-                    <div class="ft-24 mar-b10">Excellent Ride Done Ever</div>
-                    <p>
-                        The ICYCLE staff were also very supportive and cordial throughout.
-                        Thank you for the entire arrangem...
-                    </p>
-                    <div class="bg-gradient more float-right">
-                        <img src="{{BASE_URL}}images/icons/right-white.png">
-                    </div>
+                    <div class="date">{{$story->date}}</div>
+                    <div class="ft-24 mar-b10">{{substr($story->title, 0, 15)}}</div>
+                    <p>{{substr($story->content, 0, 55)}}...</p>
+                    <a href="{{BASE_URL}}stories/{{urlencode($story->title)}}/{{base64_encode(base64_encode($story->id))}}">
+                        <div class="bg-gradient more float-right">
+                            <img src="{{BASE_URL}}images/icons/right-white.png">
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

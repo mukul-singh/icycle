@@ -1,9 +1,10 @@
 <div class="col-12 col-sm-9 col-md-8 center bg-white nopad lgrey row mar-t-m50 row-nomar">
-    <div class="col-6 nopad text-center">
-    	<br/><br/><br/><br/><br/><br/>
+    <div class="col-12 col-sm-6 col-md-6 nopad text-center">
+    	<br/><br/><br/>
+        <div class="hidden-xs"><br/><br/><br/></div>
         <img src="{{BASE_URL}}images/gmc-logo.png" class="img-fluid">
     </div>
-    <div class="col-6 pad-60-30 pad-l0">
+    <div class="col-12 col-sm-6 col-md-6 pad-60-30 pad-l0 xs-pad-20">
     	<br/>
         <div class="ft-32 mar-b20 bold">GREAT MALNAD CHALLENGE</div>
         <p class="text-justify ft-16 line-ht-17">

@@ -123,11 +123,34 @@ class Site extends Controller
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
 		$pageTitle = "Impact Stories";
-		
+		$navbar = view('nav')->render();
+		$stories = DB::table("stories")->where("active", 1)->get();
+		foreach ($stories as $key => $story) {
+			$stories[$key]->date =  substr($story->date, 9, 2)." ".strtoupper($this->months[(int)substr($story->date, 5, 2)])." ".substr($story->date, 0, 4);
+		}
+		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
+		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
+		echo view('stories', ['stories' => $stories])->render();
+		return view('footer')->render();
+	}
+
+	public function storyDetail($title, $sid) {
+		$sid = base64_decode(base64_decode($sid));
+		$story = DB::table("stories")->where("id", $sid)->first();
+		$story->date =  substr($story->date, 9, 2)." ".strtoupper($this->months[(int)substr($story->date, 5, 2)])." ".substr($story->date, 0, 4);
+		$stories = DB::table("stories")->where("id", $sid)->orderBy("id", "rand()")->take(3)->get();
+		$stories[1] = $stories[0];
+		$stories[2] = $stories[0];
+		foreach ($stories as $key => $s) {
+			$stories[$key]->date =  substr($s->date, 9, 2)." ".strtoupper($this->months[(int)substr($s->date, 5, 2)])." ".substr($s->date, 0, 4);
+		}
+		$title = "Icycle - Rediscover Cycling";
+		$desc = "Icycle - Rediscover Cycling";
+		$pageTitle = "Impact Stories";
 		$navbar = view('nav')->render();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
 		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
-		echo view('stories')->render();
+		echo view('storyDetail', ['story' => $story, 'stories' => $stories])->render();
 		return view('footer')->render();
 	}
 

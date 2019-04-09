@@ -1,5 +1,5 @@
 <body class="bg-green-2">
-    <div class="tint-bg" bg-img='{{str_replace(" ", "-", strtolower($pageTitle))}}-splash.png'>
+    <div class="tint-bg" bg-img='{{BASE_URL}}images/{{str_replace(" ", "-", strtolower($pageTitle))}}-splash.png'>
         <?= $navbar;?>
         <br/><br/>
         <div class="ft-54 text-center thin xs-ft-32">{{$pageTitle}}</div>

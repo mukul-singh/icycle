@@ -81,6 +81,25 @@ class Admin extends Controller
 		return view('admin.footer')->render();
 	}
 
+	public function stories($action = "list", $sid = null)
+	{
+		$title = "Icycle - Admin";
+		echo view('admin.meta', ['title' => $title])->render();
+		echo view('admin.nav')->render();
+		if($action === "list") {
+			$stories = DB::table("stories")->orderBy("id", "desc")->get();
+			echo view("admin.stories", ["stories" => $stories])->render();
+		}
+		else if($action == "new") {
+			echo view('admin.addStory')->render();
+		}
+		else if($action == "update") {
+			$story = DB::table("stories")->where("id", $sid)->first();
+			echo view('admin.addStory', ['story' => $story])->render();
+		}
+		return view('admin.footer')->render();
+	}
+
 	public function actions()
 	{
 		$action = Input::get("action");
@@ -161,6 +180,23 @@ class Admin extends Controller
 			}
 			else {
 				DB::table("cyclotours")->where("id", $cid)->update($data);
+			}
+		}
+
+		else if($action == "stories") {
+			$sid = Input::get("sid");
+			$data = json_decode(Input::get("data"), true);
+			if(isset($_FILES['banner'])) {
+				$bannerImg = $this->uploadFile($_FILES['banner'], 'images/uploads/stories/banners');
+				if($bannerImg != -1) {
+					$data['banner'] = $bannerImg;
+				}
+			}
+			if($sid == 0) {
+				DB::table("stories")->insert($data);
+			}
+			else {
+				DB::table("stories")->where("id", $sid)->update($data);
 			}
 		}
 

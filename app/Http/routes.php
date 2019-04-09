@@ -20,6 +20,7 @@ Route::get('/weekend-events', 'Site@weekendEvents');
 Route::get('/weekend-events/{trail}/{date}', 'Site@weekendEventsDetail');
 Route::get('/cyclotours', 'Site@cyclotours');
 Route::get('/stories', 'Site@stories');
+Route::get('/stories/{title}/{sid}', 'Site@storyDetail');
 Route::get('/contact', 'Site@contact');
 Route::get('/hire-a-bicycle', 'Site@hireBicycle');
 
@@ -27,4 +28,5 @@ Route::get('/hire-a-bicycle', 'Site@hireBicycle');
 Route::get('/adminme', 'Admin@login');
 Route::get('/adminme/events/weekend-events/{action?}/{eid?}', 'Admin@weekendEvent');
 Route::get('adminme/cyclotours/{action?}/{cid?}', 'Admin@cyclotour');
+Route::get('adminme/impact-stories/{action?}/{sid?}', 'Admin@stories');
 Route::post('/admin/actions', 'Admin@actions');

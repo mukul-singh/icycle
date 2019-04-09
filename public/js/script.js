@@ -8,7 +8,7 @@ function closeNav() {
 
 $(document).ready(function() {
 	var img = $(".tint-bg").attr('bg-img');
-	$(".tint-bg").css("background-image",'url("images/'+img+'")');
+	$(".tint-bg").css("background-image",'url("'+img+'")');
 });
 
 

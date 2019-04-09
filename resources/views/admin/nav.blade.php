@@ -12,6 +12,9 @@
         <a class="nav-link" href="{{BASE_URL}}adminme/cyclotours">Cyclotours</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="{{BASE_URL}}adminme/impact-stories">Impact Stories</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="#" onclick="logout()">Logout</a>
     </li>
 </ul>

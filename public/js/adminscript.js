@@ -155,6 +155,47 @@ function saveTour(e, cid) {
     });
 }
 
+function saveStory(e, sid) {
+    var data = {
+        "title": $("#title").val().trim(),
+        "date": $("#date").val(),
+        "sub_title": $("#sub_title").val().trim(),
+        "content": $("#content").val().trim()
+    };
+    if(data['title'] == "") {
+        showPopover("#title", "top", "Title is required");
+        return;
+    }
+    if(data['date'] == "") {
+        showPopover("#date", "top", "Story date is required");
+        return;
+    }
+    if(data['content'] == "") {
+        showPopover("#content", "top", "Story content is required");
+        return;
+    }
+    var formData = new FormData();
+    var galleryImageCount = 0;
+    var detailPoints = [];
+    formData.append("action", "stories");
+    formData.append("data", JSON.stringify(data));
+    formData.append("sid", sid);
+    formData.append("banner", $("#banner").prop('files')[0]);
+    loadButton(e, spinnerwhitexs);
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        contentType: false,
+        cache: false,
+        processData:false,
+        data: formData,
+        success: function(data) {
+            unloadButton(e, ".spinner");
+            location.reload();
+        }
+    });
+}
+
 /*
 / loadButton: function to switch button to loading state
 */
