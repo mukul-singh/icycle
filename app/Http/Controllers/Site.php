@@ -57,9 +57,10 @@ class Site extends Controller
 		$desc = "Icycle - Rediscover Cycling";
 		$pageTitle = "Annual Events";
 		$navbar = view('nav')->render();
+		$events = DB::table("annual_events")->where("active", 1)->get();
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
 		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
-		echo view('annualEvents')->render();
+		echo view('annualEvents', ['events' => $events])->render();
 		return view('footer')->render();
 	}
 
@@ -92,7 +93,7 @@ class Site extends Controller
 	{
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
-		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->first();
+		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->where("active", 1)->first();
 		if(count($event)) {
 			$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
 			$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
@@ -136,9 +137,9 @@ class Site extends Controller
 
 	public function storyDetail($title, $sid) {
 		$sid = base64_decode(base64_decode($sid));
-		$story = DB::table("stories")->where("id", $sid)->first();
+		$story = DB::table("stories")->where("id", $sid)->where("active", 1)->first();
 		$story->date =  substr($story->date, 9, 2)." ".strtoupper($this->months[(int)substr($story->date, 5, 2)])." ".substr($story->date, 0, 4);
-		$stories = DB::table("stories")->where("id", $sid)->orderBy("id", "rand()")->take(3)->get();
+		$stories = DB::table("stories")->where("id", $sid)->where("active", 1)->orderBy("id", "<>", "rand()")->take(3)->get();
 		$stories[1] = $stories[0];
 		$stories[2] = $stories[0];
 		foreach ($stories as $key => $s) {

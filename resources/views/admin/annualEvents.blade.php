@@ -1,23 +1,23 @@
 <div class="container-fluid row row-nomar">
 	<div class="col-12 col-sm-8 col-md-8">
 		<h2 class="mar-b20">
-			Cyclotours
-			<a href="{{BASE_URL}}adminme/cyclotours/new">
+			Annual Events
+			<a href="{{BASE_URL}}adminme/events/annual-events/new">
 				<button class="btn compact btn-success">Add new</button>
 			</a>
 		</h2>
 		<table class="table table-hover">
 			<tr>
 				<th>Sr no.</th>
-				<th>Cyclotour</th>
+				<th>Event</th>
 				<th>Actions</th>
 			</tr>
-			<?php foreach($tours as $i => $tour) {?>
+			<?php foreach($events as $i => $event) {?>
 			<tr>
 				<td>{{($i+1)}}</td>
-				<td>{{$tour->name}}</td>
+				<td>{{$event->title}}</td>
 				<td>
-					<a href="{{BASE_URL}}adminme/cyclotours/update/{{$tour->id}}">
+					<a href="{{BASE_URL}}adminme/events/annual-events/update/{{$event->id}}">
 						<button class="btn btn-primary compact">Edit</button>
 					</a>
 				</td>

@@ -7,28 +7,15 @@ function closeNav() {
 }
 
 $(document).ready(function() {
+    $('.carousel').carousel({
+    interval: false
+});
 	var img = $(".tint-bg").attr('bg-img');
 	$(".tint-bg").css("background-image",'url("'+img+'")');
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $('#carouselExample').on('slide.bs.carousel', function (e) {
-
-  
     var $e = $(e.relatedTarget);
     var idx = $e.index();
     var itemsPerSlide = 6;

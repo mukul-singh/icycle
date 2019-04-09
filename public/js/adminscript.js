@@ -20,7 +20,7 @@ function adminLogin(e) {
     });
 }
 
-function logout() {
+function logoutAdmin() {
     $.ajax({
         url: BASE_URL+"admin/actions",
         type: "POST",
@@ -175,11 +175,44 @@ function saveStory(e, sid) {
         return;
     }
     var formData = new FormData();
-    var galleryImageCount = 0;
-    var detailPoints = [];
+    var galleryImageCount
     formData.append("action", "stories");
     formData.append("data", JSON.stringify(data));
     formData.append("sid", sid);
+    formData.append("banner", $("#banner").prop('files')[0]);
+    loadButton(e, spinnerwhitexs);
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        contentType: false,
+        cache: false,
+        processData:false,
+        data: formData,
+        success: function(data) {
+            unloadButton(e, ".spinner");
+            location.reload();
+        }
+    });
+}
+
+function saveAnnualEvent(e, aid) {
+    var data = {
+        "title": $("#title").val().trim(),
+        "url": $("#url").val().trim(),
+        "description": $("#description").val().trim()
+    };
+    if(data['title'] == "") {
+        showPopover("#title", "top", "Title is required");
+        return;
+    }
+    if(data['description'] == "") {
+        showPopover("#description", "top", "Event description is required");
+        return;
+    }
+    var formData = new FormData();
+    formData.append("action", "annual-events");
+    formData.append("data", JSON.stringify(data));
+    formData.append("aid", aid);
     formData.append("banner", $("#banner").prop('files')[0]);
     loadButton(e, spinnerwhitexs);
     $.ajax({

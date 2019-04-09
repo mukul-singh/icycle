@@ -12,8 +12,14 @@
                 <div class="col-12 col-sm-3 col-md-3 nopad">
                     Get the latest updates<br/><small>Subscribe to our Newsletter</small>
                 </div>
-                <div class="col-12 col-sm-9 col-md-9">
-                    sdsd
+                <div class="col-12 col-sm-9 col-md-9 xs-nopad">
+                    <div class="visible-xs mar-b15"></div>
+                    <div class="input-group mb-3 nomar">
+                        <input type="text" class="form-control" placeholder="Enter your emall address here">
+                        <div class="input-group-append">
+                            <button class="btn bg-gradient compact" type="submit">SUBSCRIBE ME!</button> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

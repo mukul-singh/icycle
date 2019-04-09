@@ -27,6 +27,7 @@ Route::get('/hire-a-bicycle', 'Site@hireBicycle');
 // adminme Route
 Route::get('/adminme', 'Admin@login');
 Route::get('/adminme/events/weekend-events/{action?}/{eid?}', 'Admin@weekendEvent');
+Route::get('/adminme/events/annual-events/{action?}/{aid?}', 'Admin@annualEvent');
 Route::get('adminme/cyclotours/{action?}/{cid?}', 'Admin@cyclotour');
 Route::get('adminme/impact-stories/{action?}/{sid?}', 'Admin@stories');
 Route::post('/admin/actions', 'Admin@actions');

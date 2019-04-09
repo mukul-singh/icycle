@@ -41,18 +41,21 @@ class Admin extends Controller
 
 	public function weekendEvent($action = "list", $eid = null)
 	{
+		if(!$this->isLoggedIn()) {
+			return $this->login();
+		}
 		$title = "Icycle - Admin";
 		echo view('admin.meta', ['title' => $title])->render();
 		echo view('admin.nav')->render();
 		if($action === "list") {
-			$events = DB::table("weekend_events")->orderBy("id", "desc")->get();
+			$events = DB::table("weekend_events")->where("active", 1)->orderBy("id", "desc")->get();
 			echo view("admin.weekendEvents", ["events" => $events])->render();
 		}
 		else if($action == "new") {
 			echo view('admin.addWeekendEvent')->render();
 		}
 		else if($action == "update") {
-			$event = DB::table("weekend_events")->where("id", $eid)->first();
+			$event = DB::table("weekend_events")->where("active", 1)->where("id", $eid)->first();
 			if(count($event)) {
 				$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
 				$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
@@ -62,20 +65,45 @@ class Admin extends Controller
 		return view('admin.footer')->render();
 	}
 
-	public function cyclotour($action = "list", $cid = null)
+	public function annualEvent($action = "list", $aid = null)
 	{
+		if(!$this->isLoggedIn()) {
+			return $this->login();
+		}
 		$title = "Icycle - Admin";
 		echo view('admin.meta', ['title' => $title])->render();
 		echo view('admin.nav')->render();
 		if($action === "list") {
-			$tours = DB::table("cyclotours")->orderBy("id", "desc")->get();
+			$events = DB::table("annual_events")->where("active", 1)->orderBy("id", "desc")->get();
+			echo view("admin.annualEvents", ["events" => $events])->render();
+		}
+		else if($action == "new") {
+			echo view('admin.addAnnualEvent')->render();
+		}
+		else if($action == "update") {
+			$event = DB::table("annual_events")->where("active", 1)->where("id", $aid)->first();
+			echo view('admin.addAnnualEvent', ['event' => $event])->render();
+		}
+		return view('admin.footer')->render();
+	}
+
+	public function cyclotour($action = "list", $cid = null)
+	{
+		if(!$this->isLoggedIn()) {
+			return $this->login();
+		}
+		$title = "Icycle - Admin";
+		echo view('admin.meta', ['title' => $title])->render();
+		echo view('admin.nav')->render();
+		if($action === "list") {
+			$tours = DB::table("cyclotours")->where("active", 1)->orderBy("id", "desc")->get();
 			echo view("admin.cyclotours", ["tours" => $tours])->render();
 		}
 		else if($action == "new") {
 			echo view('admin.addCyclotour')->render();
 		}
 		else if($action == "update") {
-			$tour = DB::table("cyclotours")->where("id", $cid)->first();
+			$tour = DB::table("cyclotours")->where("active", 1)->where("id", $cid)->first();
 			echo view('admin.addCyclotour', ['tour' => $tour])->render();
 		}
 		return view('admin.footer')->render();
@@ -83,18 +111,21 @@ class Admin extends Controller
 
 	public function stories($action = "list", $sid = null)
 	{
+		if(!$this->isLoggedIn()) {
+			return $this->login();
+		}
 		$title = "Icycle - Admin";
 		echo view('admin.meta', ['title' => $title])->render();
 		echo view('admin.nav')->render();
 		if($action === "list") {
-			$stories = DB::table("stories")->orderBy("id", "desc")->get();
+			$stories = DB::table("stories")->where("active", 1)->orderBy("id", "desc")->get();
 			echo view("admin.stories", ["stories" => $stories])->render();
 		}
 		else if($action == "new") {
 			echo view('admin.addStory')->render();
 		}
 		else if($action == "update") {
-			$story = DB::table("stories")->where("id", $sid)->first();
+			$story = DB::table("stories")->where("active", 1)->where("id", $sid)->first();
 			echo view('admin.addStory', ['story' => $story])->render();
 		}
 		return view('admin.footer')->render();
@@ -109,6 +140,7 @@ class Admin extends Controller
 			$adminUser = DB::table("admins")->where("username", $username)->where("password", $password)->select("id")->get();
 			if(count($adminUser) > 0) {
 				Session::put('adminid', $adminUser[0]->id);
+				setcookie("adminid", $adminUser[0]->id, time() + (86400 * 30), "/");
 				return 0;
 			}
 			else {
@@ -197,6 +229,23 @@ class Admin extends Controller
 			}
 			else {
 				DB::table("stories")->where("id", $sid)->update($data);
+			}
+		}
+
+		else if($action == "annual-events") {
+			$aid = Input::get("aid");
+			$data = json_decode(Input::get("data"), true);
+			if(isset($_FILES['banner'])) {
+				$bannerImg = $this->uploadFile($_FILES['banner'], 'images/uploads/annual-events/banners');
+				if($bannerImg != -1) {
+					$data['banner'] = $bannerImg;
+				}
+			}
+			if($aid == 0) {
+				DB::table("annual_events")->insert($data);
+			}
+			else {
+				DB::table("annual_events")->where("id", $aid)->update($data);
 			}
 		}
 
