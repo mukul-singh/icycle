@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use DB;
+use Input;
+
 define('BASE_URL', 'http://myproj/icycle/public/');
 
 class Site extends Controller
@@ -93,8 +95,9 @@ class Site extends Controller
 	{
 		$title = "Icycle - Rediscover Cycling";
 		$desc = "Icycle - Rediscover Cycling";
-		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->where("active", 1)->first();
+		$event = DB::table("weekend_events")->where("trail", urldecode($trail))->where("date", $date." 00:00:00")->where("active", 1)->take(1)->get();
 		if(count($event)) {
+			$event = $event[0];
 			$event->gallery = DB::table("event_gallery")->where("eid", $event->id)->get();
 			$event->infoPoints = DB::table("infoPoints")->where("eid", $event->id)->get();
 		}
@@ -161,9 +164,26 @@ class Site extends Controller
 		$desc = "Icycle - Rediscover Cycling";
 		$pageTitle = "Hire a Bicycle";
 		$navbar = view('nav')->render();
+		$bicycles = DB::table("bicycles")->where("active", 1)->get();
+		foreach ($bicycles as $key => $b) {
+			$bicycles[$key]->images = DB::table("bicycle_photos")->where("bid", $b->id)->get();
+			$bicycles[$key]->specs = explode(PHP_EOL, $b->specs);
+		}
 		echo view('meta', ['title' => $title, 'desc' => $desc])->render();
 		echo view('header', ['navbar' => $navbar, 'pageTitle' => $pageTitle])->render();
-		echo view('hireBicycle')->render();
+		echo view('hireBicycle', ['bicycles' => $bicycles])->render();
 		return view('footer')->render();
+	}
+
+	public function actions()
+	{
+		$action = Input::get("action");
+		if($action == "getBicycleSpecs") {
+			$bid = base64_decode(base64_decode(Input::get("bid")));
+			$bicycle = DB::table("bicycles")->where("active", 1)->where("id", $bid)->first();
+			$bicycle->images = DB::table("bicycle_photos")->where("bid", $bid)->get();
+			$bicycle->specs = explode(PHP_EOL, $bicycle->specs);
+			return view('modals.bicycleModal', ['bicycle' => $bicycle])->render();
+		}
 	}
 }

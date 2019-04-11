@@ -23,6 +23,7 @@ Route::get('/stories', 'Site@stories');
 Route::get('/stories/{title}/{sid}', 'Site@storyDetail');
 Route::get('/contact', 'Site@contact');
 Route::get('/hire-a-bicycle', 'Site@hireBicycle');
+Route::post('/actions', 'Site@actions');
 
 // adminme Route
 Route::get('/adminme', 'Admin@login');
@@ -30,4 +31,5 @@ Route::get('/adminme/events/weekend-events/{action?}/{eid?}', 'Admin@weekendEven
 Route::get('/adminme/events/annual-events/{action?}/{aid?}', 'Admin@annualEvent');
 Route::get('adminme/cyclotours/{action?}/{cid?}', 'Admin@cyclotour');
 Route::get('adminme/impact-stories/{action?}/{sid?}', 'Admin@stories');
+Route::get('adminme/bicycles/{action?}/{bid?}', 'Admin@bicycles');
 Route::post('/admin/actions', 'Admin@actions');

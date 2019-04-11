@@ -505,6 +505,36 @@ hr.dark {
 
 
 
+.spinner {
+  border: 2px solid #E2E2E2;
+  border-radius: 50%;
+  border-top: 2px solid #333;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  -webkit-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
+}
+.spinner.white.xs {
+    width: 13px;
+    height: 13px;
+    border: 2px solid #FFF;
+    border-top: 2px solid #000;
+}
+.spinner.lg {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #FFF;
+    border-top: 2px solid #000;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+.btn .spinner {
+    margin-bottom: -2px;
+    margin-left: 5px;
+}
 
 
 
@@ -517,6 +547,12 @@ hr.dark {
 
 
 
+
+@media (min-width: 992px) {
+    .modal-lg {
+        max-width: 900px;
+    }
+}
 @media (min-width: 576px) {
     .modal-sm {
         max-width: 300px;

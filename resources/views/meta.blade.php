@@ -8,4 +8,5 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{BASE_URL}}css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{BASE_URL}}css/style.css"/>
+    <script>var BASE_URL = "<?=BASE_URL;?>"</script>
 </head>

@@ -16,7 +16,7 @@
 			<tr>
 				<td>Website URL</td>
 				<td>
-					<input type="text" class="form-control" id="url" value="<?=isset($event) ? $event->url : '';?>">
+					<input type="text" class="form-control" id="url" value="<?=isset($event) ? $event->url : '';?>" placeholder="http://www.example.com">
 				</td>
 			</tr>
 			<tr>

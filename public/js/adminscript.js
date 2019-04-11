@@ -107,6 +107,7 @@ function saveEvent(e, eid) {
         data: formData,
         success: function(data) {
             unloadButton(e, ".spinner");
+            location.reload();
         }
     });
 }
@@ -116,6 +117,17 @@ function deleteGalleryImage(eid, id, e) {
         url: BASE_URL+"admin/actions",
         type: "POST",
         data: {"action":"delete-gallery-image", "eid":eid, "id":id},
+        success: function(data) {
+            $(e).parent().remove();
+        }
+    });
+}
+
+function deleteBicycleImage(bid, id, e) {
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        data: {"action":"delete-bicycle-image", "bid":bid, "id":id},
         success: function(data) {
             $(e).parent().remove();
         }
@@ -214,6 +226,49 @@ function saveAnnualEvent(e, aid) {
     formData.append("data", JSON.stringify(data));
     formData.append("aid", aid);
     formData.append("banner", $("#banner").prop('files')[0]);
+    loadButton(e, spinnerwhitexs);
+    $.ajax({
+        url: BASE_URL+"admin/actions",
+        type: "POST",
+        contentType: false,
+        cache: false,
+        processData:false,
+        data: formData,
+        success: function(data) {
+            unloadButton(e, ".spinner");
+            location.reload();
+        }
+    });
+}
+
+function saveBicycle(e, bid) {
+    var data = {
+        "name": $("#name").val().trim(),
+        "specs": $("#specs").val().trim(),
+        "weekend_price": $("#weekend_price").val(),
+        "weekday_price": $("#weekday_price").val()
+    };
+    if(data['name'] == "") {
+        showPopover("#name", "top", "Name is required");
+        return;
+    }
+    if(data['specs'] == "") {
+        showPopover("#specs", "top", "Bicycle specs is required");
+        return;
+    }
+    var formData = new FormData();
+    var galleryImageCount = 0;
+    var detailPoints = [];
+    formData.append("action", "bicycle");
+    formData.append("data", JSON.stringify(data));
+    formData.append("bid", bid);
+    $("#gallery-images .gallery-img").each(function() {
+        if($(this).val()) {
+            galleryImageCount++;
+            formData.append("galleryImage"+galleryImageCount, $(this).prop('files')[0]);
+        }
+    });
+    formData.append("galleryImageCount", galleryImageCount);
     loadButton(e, spinnerwhitexs);
     $.ajax({
         url: BASE_URL+"admin/actions",

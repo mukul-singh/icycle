@@ -76,7 +76,7 @@
 			<tr>
 				<td>Event Description</td>
 				<td>
-					<textarea class="form-control" rows="15" id="event-desc">value="<?=isset($event) ? $event->description : '';?>"</textarea>
+					<textarea class="form-control" rows="15" id="event-desc"><?=isset($event) ? $event->description : '';?></textarea>
 				</td>
 			</tr>
 			<tr>
